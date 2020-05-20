@@ -88,11 +88,40 @@ var tableHeader = function () {
 tableHeader();
 
 
+var locationForm = document.getElementById('locationForm');
+locationForm.addEventListener('submit',function(event){
+    event.preventDefault();
+    var locationNameValue = event.target.locationName.value;
+    console.log(locationNameValue);
+
+    var maxNumValue = parseInt(event.target.maxNum.value);
+    
+
+    var minNumValue =parseInt(event.target.minNum.value);
+
+    var avgCookiesValue =parseFloat(event.target.avgCookies.value);
+
+    var child = document.getElementById('aziz');
+     child.removeChild(child.lastChild);
+     
+
+     
+//(name, minCus, maxCus, avgCookies)
+    var newLocation = new Stores(locationNameValue,minNumValue,maxNumValue,avgCookiesValue);
+    newLocation.getRandomCustomer();
+    newLocation.getCookiespurchased();
+    newLocation.render();
+    Footer();
+     document.getElementById('locationForm').reset();
+});
+
+
 //creat footer to the table
 function Footer() {
     var data = document.getElementById('aziz');
     var tr7 = document.createElement('tr');
     data.appendChild(tr7);
+    
     var th6 = document.createElement('th');
     tr7.appendChild(th6);
     th6.textContent = 'Totals';
@@ -111,8 +140,6 @@ function Footer() {
     tr7.appendChild(th9);
     th9.textContent = totalOfTotal;
 }
-
-
 
 
 var syattle = new Stores('Syattle', 23, 65, 6.3);
