@@ -14,7 +14,6 @@ function Stores(name, minCus, maxCus, avgCookies) {
     loc.push(this);  
 }
 
-
 //Git the numbers of random customers per hours
 Stores.prototype.getRandomCustomer = function () {
     for (var i = 0; i < hours.length; i++) {
